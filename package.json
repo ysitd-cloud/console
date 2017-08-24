@@ -1,0 +1,11 @@
+{
+  "name": "console",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Console for YSITD Cloud",
+  "main": "src/server.js",
+  "repository": "git+https://github.com/ysitd-cloud/console.git",
+  "author": "Tony Yip <tony@opensource.hk>",
+  "license": "AGPL-3.0+",
+  "dependencies": {}
+}
