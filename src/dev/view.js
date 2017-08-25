@@ -1,22 +1,18 @@
-const fs = require('fs');
 const chokidar = require('chokidar');
 const { createBundleRenderer } = require('vue-server-renderer');
+let serverBundle = require('../../dist/vue-ssr-server-bundle.json');
 
-let serverBundle;
+const bundleCache = require.resolve('../../dist/vue-ssr-server-bundle.json');
 let renderer;
 
 const BUNDLE_PATH = './dist/vue-ssr-server-bundle.json';
 
 function updateServerBundle() {
-  return new Promise((resolve, reject) => {
-    fs.readFile(BUNDLE_PATH, 'utf8', (err, data) => {
-      if (err) {
-        reject(err);
-      } else {
-        serverBundle = JSON.parse(data);
-        resolve();
-      }
-    });
+  return new Promise((resolve) => {
+    delete require.cache[bundleCache];
+    // eslint-disable-next-line global-require
+    serverBundle = require('../../dist/vue-ssr-server-bundle.json');
+    resolve();
   });
 }
 

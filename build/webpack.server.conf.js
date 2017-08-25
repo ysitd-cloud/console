@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const base = require('./webpack.base.conf');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
@@ -7,6 +8,12 @@ module.exports = merge.smart(base, {
   entry: './src/view/serverEntry.js',
   plugins: [
     new VueSSRServerPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+      sourceMap: true,
+    }),
   ],
   target: 'node',
   output: {
@@ -27,7 +34,10 @@ module.exports = merge.smart(base, {
             options: {
               presets: [
                 ['env', {
-                  targets: { node: 'current' },
+                  targets: {
+                    node: 'current',
+                    uglify: true,
+                  },
                 }],
               ],
               plugins: [
