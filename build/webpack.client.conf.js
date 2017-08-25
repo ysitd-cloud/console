@@ -1,21 +1,13 @@
 const merge = require('webpack-merge');
 const base = require('./webpack.base.conf');
-const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
-const nodeExternals = require('webpack-node-externals');
 
 module.exports = merge.smart(base, {
-  entry: './src/view/serverEntry.js',
-  plugins: [
-    new VueSSRServerPlugin(),
-  ],
-  target: 'node',
-  output: {
-    libraryTarget: 'commonjs2',
+  entry: {
+    app: ['./src/view/clientEntry.js'],
   },
-  devtool: 'source-map',
-  externals: nodeExternals({
-    whitelist: /\.(css|vue|styl)$/,
-  }),
+  output: {
+    publicPath: '/',
+  },
   module: {
     rules: [
       {
@@ -27,11 +19,16 @@ module.exports = merge.smart(base, {
             options: {
               presets: [
                 ['env', {
-                  targets: { node: 'current' },
+                  targets: {
+                    browsers: ['last 2 Firefox version', 'last 2 Chrome versions'],
+                    uglify: true,
+                  },
+                  modules: false,
                 }],
               ],
               plugins: [
                 'syntax-dynamic-import',
+                'transform-runtime',
               ],
             },
           },

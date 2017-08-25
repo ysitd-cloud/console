@@ -45,3 +45,16 @@ exports.cssLoaders = function (opts) {
     styl: generateLoaders('stylus'),
   };
 };
+
+// Generate loaders for standalone style files (outside of .vue)
+exports.styleLoaders = function (options) {
+  const loaders = exports.cssLoaders(options);
+  return Object.keys(loaders).reduce((output, extension) => {
+    const loader = loaders[extension];
+    output.push({
+      test: new RegExp(`\\.${extension}$`),
+      use: loader,
+    });
+    return output;
+  }, []);
+};
