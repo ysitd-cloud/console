@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const utils = require('./utils');
 const base = require('./webpack.client.conf');
@@ -19,6 +20,10 @@ module.exports = merge.smart(base, {
     chunkFilename: '[id].[chunkhash].js',
   },
   plugins: [
+    new AssetsWebpackPlugin({
+      filename: 'assets.json',
+      path: path.join(process.cwd(), 'dist'),
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),

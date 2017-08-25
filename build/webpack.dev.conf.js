@@ -1,7 +1,9 @@
+const path = require('path');
 const { HotModuleReplacementPlugin, NoEmitOnErrorsPlugin } = require('webpack');
 const merge = require('webpack-merge');
 const base = require('./webpack.client.conf');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const utils = require('./utils');
 
 module.exports = merge.smart(base, {
@@ -16,5 +18,10 @@ module.exports = merge.smart(base, {
     new HotModuleReplacementPlugin(),
     new NoEmitOnErrorsPlugin(),
     new FriendlyErrorsPlugin(),
+    new AssetsWebpackPlugin({
+      filename: 'assets.json',
+      path: path.join(process.cwd(), 'dist'),
+      prettyPrint: true,
+    }),
   ],
 });

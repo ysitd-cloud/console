@@ -3,6 +3,12 @@
     {{- meta | safe -}}
     {{- title | safe -}}
     {{- link | safe -}}
+    {%- for link in links -%}
+        <link href="{{- link -}}" rel="stylesheet" type="text/css">
+    {%- endfor  -%}
 </head><body>
 {{- html | safe -}}
+{%- for script in scripts  -%}
+    <script src="{{- script -}}"></script>
+{%- endfor -%}
 </body></html>
