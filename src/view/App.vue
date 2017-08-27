@@ -1,13 +1,19 @@
 <template>
     <v-app id="app">
-        <v-navigation-drawer></v-navigation-drawer>
-        <v-toolbar></v-toolbar>
+        <v-navigation-drawer v-model="drawer" persistent light></v-navigation-drawer>
+        <v-toolbar class="primary" dark>
+            <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+            <v-toolbar-title>YSITD Cloud</v-toolbar-title>
+            <v-spacer></v-spacer>
+        </v-toolbar>
         <main>
             <v-container fluid>
                 <router-view></router-view>
             </v-container>
         </main>
-        <v-footer></v-footer>
+        <v-footer class="primary">
+            <span class="white--text">&copy; YSITD Cloud</span>
+        </v-footer>
     </v-app>
 </template>
 
@@ -35,6 +41,11 @@
 
 <script>
   export default {
+    data() {
+      return {
+        drawer: false,
+      };
+    },
     metaInfo: {
       title: 'YSITD Cloud',
       link: [
