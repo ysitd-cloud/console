@@ -9,7 +9,8 @@
   "license": "AGPL-3.0+",
   "scripts": {
     "start": "node src/server.js",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "lint": "eslint --ext .js,.vue ."
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
