@@ -8,7 +8,9 @@
         </v-toolbar>
         <main>
             <v-container fluid>
-                <router-view></router-view>
+                <transition name="fade-transition">
+                    <router-view></router-view>
+                </transition>
             </v-container>
         </main>
         <v-footer class="primary">
