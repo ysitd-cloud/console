@@ -3,6 +3,7 @@ const { createBundleRenderer } = require('vue-server-renderer');
 const assets = require('../../dist/assets.json');
 let serverBundle = require('../../dist/vue-ssr-server-bundle.json');
 
+// eslint-disable-next-line import/no-unresolved
 const bundleCache = require.resolve('../../dist/vue-ssr-server-bundle.json');
 let renderer;
 
@@ -26,7 +27,7 @@ const BUNDLE_PATH = './dist/vue-ssr-server-bundle.json';
 function updateServerBundle() {
   return new Promise((resolve) => {
     delete require.cache[bundleCache];
-    // eslint-disable-next-line global-require
+    // eslint-disable-next-line global-require,import/no-unresolved
     serverBundle = require('../../dist/vue-ssr-server-bundle.json');
     resolve();
   });

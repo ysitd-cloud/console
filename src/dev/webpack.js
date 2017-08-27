@@ -1,6 +1,4 @@
 const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const serverBundleConfig = require('../../build/webpack.server.conf');
 const devConfig = require('../../build/webpack.dev.conf');

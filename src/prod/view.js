@@ -1,5 +1,7 @@
 const { createBundleRenderer } = require('vue-server-renderer');
+// eslint-disable-next-line import/no-unresolved
 const serverBundle = require('../../dist/vue-ssr-server-bundle.json');
+// eslint-disable-next-line import/no-unresolved
 const clientManifest = require('../../dist/vue-ssr-client-manifest.json');
 
 const renderer = createBundleRenderer(serverBundle, {
