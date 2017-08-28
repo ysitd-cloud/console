@@ -47,6 +47,15 @@ passport.use('ycloud', new OAuth2Strategy({
     .catch(cb);
 }));
 
+function loginGuard(req, res, next) {
+  if (!req.user) {
+    res.redirect('/auth/login');
+    res.end();
+  } else {
+    next();
+  }
+}
+
 function createAuthRouter() {
   const router = Router();
   router.get('/ycloud', passport.authenticate('ycloud'));
@@ -77,6 +86,8 @@ module.exports = app => new Promise((resolve) => {
   app.use(passport.session());
 
   app.use('/auth', createAuthRouter());
+
+  app.use(loginGuard);
 
   resolve(app);
 });
