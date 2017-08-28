@@ -1,0 +1,16 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 Firefox version", "last 2 Chrome versions"],
+        "uglify": true,
+      },
+      "modules": false,
+    }],
+    "stage-2"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "syntax-dynamic-import"
+  ]
+}

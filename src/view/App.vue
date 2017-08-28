@@ -1,5 +1,5 @@
 <template>
-    <v-app id="app">
+    <v-app id="app" toolbar footer>
         <drawer :drawer.sync="drawer"></drawer>
         <v-toolbar class="primary" dark>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>

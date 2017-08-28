@@ -16,21 +16,6 @@ module.exports = merge.smart(base, {
         use: [
           {
             loader: 'babel-loader',
-            options: {
-              presets: [
-                ['env', {
-                  targets: {
-                    browsers: ['last 2 Firefox version', 'last 2 Chrome versions'],
-                    uglify: true,
-                  },
-                  modules: false,
-                }],
-              ],
-              plugins: [
-                'syntax-dynamic-import',
-                'transform-runtime',
-              ],
-            },
           },
         ],
       },

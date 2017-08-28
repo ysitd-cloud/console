@@ -25,15 +25,18 @@ module.exports = merge.smart(base, {
           {
             loader: 'babel-loader',
             options: {
+              babelrc: false,
               presets: [
                 ['env', {
                   targets: {
                     node: 'current',
                   },
                 }],
+                'stage-2',
               ],
               plugins: [
                 'syntax-dynamic-import',
+                'syntax-object-rest-spread',
               ],
             },
           },

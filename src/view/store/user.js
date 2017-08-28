@@ -18,4 +18,9 @@ export default {
       commit('update', user);
     },
   },
+  getters: {
+    photo(state) {
+      return state.photos[0].value;
+    },
+  },
 };
