@@ -71,6 +71,7 @@ module.exports = app => updateServerBundle()
     app.get('*', (req, res, next) => {
       const context = {
         url: req.url,
+        user: req.user,
       };
 
       renderer.renderToString(context, (err, html) => {
@@ -87,6 +88,7 @@ module.exports = app => updateServerBundle()
             html,
             scripts,
             styles,
+            state: JSON.stringify(context.state),
             title: title.text(),
             link: link.text(),
             meta: meta.text(),

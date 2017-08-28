@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex, { Store } from 'vuex';
+import user from './user';
 
 Vue.use(Vuex);
 
@@ -8,5 +9,8 @@ export default function () {
     state: {},
     actions: {},
     mutations: {},
+    modules: {
+      user,
+    },
   });
 }

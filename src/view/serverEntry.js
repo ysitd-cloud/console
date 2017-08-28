@@ -1,7 +1,9 @@
 import createApp from './app';
 
 export default context => new Promise((resolve, reject) => {
-  const { app, router } = createApp();
+  const { app, router, store } = createApp();
+
+  store.dispatch('user/update', context.user);
 
   context.meta = app.$meta();
 
@@ -12,7 +14,22 @@ export default context => new Promise((resolve, reject) => {
     if (!matchedComponents.length) {
       reject({ code: 404 });
     } else {
-      resolve(app);
+      Promise.all(matchedComponents.map((Component) => {
+        if (Component.asyncData) {
+          return Component.asyncData({
+            store,
+            router,
+            route: router.currentRoute,
+            user: context.user,
+          });
+        }
+        return Promise.resolve(null);
+      }))
+        .then(() => {
+          context.state = store.state;
+          resolve(app);
+        })
+        .catch(reject);
     }
   }, reject);
 });

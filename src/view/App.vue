@@ -1,6 +1,6 @@
 <template>
     <v-app id="app">
-        <v-navigation-drawer v-model="drawer" persistent light></v-navigation-drawer>
+        <drawer :drawer.sync="drawer"></drawer>
         <v-toolbar class="primary" dark>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title>YSITD Cloud</v-toolbar-title>
@@ -42,7 +42,12 @@
 </style>
 
 <script>
+  import Drawer from './components/Drawer.vue';
+
   export default {
+    components: {
+      Drawer,
+    },
     data() {
       return {
         drawer: false,
