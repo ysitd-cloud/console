@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-require('./template')(app);
+require('./server/template')(app);
 
 require('./server/session')(app)
   .then(require('./server/assets'))

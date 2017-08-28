@@ -3,7 +3,7 @@ const { createBundleRenderer } = require('vue-server-renderer');
 const assets = require('../../dist/assets.json');
 // eslint-disable-next-line import/no-unresolved
 let serverBundle = require('../../dist/vue-ssr-server-bundle.json');
-const { IS_PRODUCTION } = require('../config');
+const { IS_PRODUCTION } = require('./config');
 
 // eslint-disable-next-line import/no-unresolved
 const bundleCache = require.resolve('../../dist/vue-ssr-server-bundle.json');

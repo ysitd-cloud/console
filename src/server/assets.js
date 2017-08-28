@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 const serveStatic = require('serve-static');
-const { IS_PRODUCTION } = require('../config');
+const { IS_PRODUCTION } = require('./config');
 
 function serverDevAssets(app) {
   const webpack = require('webpack');
