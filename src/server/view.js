@@ -1,7 +1,9 @@
 const chokidar = require('chokidar');
 const { createBundleRenderer } = require('vue-server-renderer');
 const assets = require('../../dist/assets.json');
+// eslint-disable-next-line import/no-unresolved
 let serverBundle = require('../../dist/vue-ssr-server-bundle.json');
+const { IS_PRODUCTION } = require('../config');
 
 // eslint-disable-next-line import/no-unresolved
 const bundleCache = require.resolve('../../dist/vue-ssr-server-bundle.json');
@@ -35,19 +37,33 @@ function updateServerBundle() {
 
 function updateRenderer() {
   return new Promise((resolve) => {
-    renderer = createBundleRenderer(serverBundle, {
+    const opt = {
       runInNewContext: 'once',
-    });
+    };
+
+    if (IS_PRODUCTION) {
+      // eslint-disable-next-line import/no-unresolved,global-require
+      opt.clientManifest = require('../../dist/vue-ssr-client-manifest.json');
+    }
+
+
+    renderer = createBundleRenderer(serverBundle, opt);
     resolve();
   });
 }
 
-const watcher = chokidar.watch(BUNDLE_PATH);
+function startWatch() {
+  const watcher = chokidar.watch(BUNDLE_PATH);
 
-watcher.on('change', () => {
-  updateServerBundle()
-    .then(() => updateRenderer());
-});
+  watcher.on('change', () => {
+    updateServerBundle()
+      .then(() => updateRenderer());
+  });
+}
+
+if (!IS_PRODUCTION) {
+  startWatch();
+}
 
 module.exports = app => updateServerBundle()
   .then(() => updateRenderer())
@@ -59,7 +75,12 @@ module.exports = app => updateServerBundle()
 
       renderer.renderToString(context, (err, html) => {
         if (err) {
-          next(err);
+          if ('code' in err) {
+            res.status(err.code);
+            res.end('404 Not Found');
+          } else {
+            next(err);
+          }
         } else {
           const { title, link, meta } = context.meta.inject();
           res.render('app.jinja', {

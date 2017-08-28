@@ -1,21 +1,17 @@
 require('dotenv').load();
 
 const express = require('express');
-const template = require('./template');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-template(app);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-let binding;
+require('./template')(app);
 
-if (process.env.NODE_ENV !== 'production') {
-  // eslint-disable-next-line global-require
-  binding = require('./dev');
-} else {
-  // eslint-disable-next-line global-require
-  binding = require('./prod');
-}
-
-binding(app)
-  .then(() => app.listen(process.env.PORT || 8080));
+require('./server/session')(app)
+  .then(require('./server/assets'))
+  .then(require('./server/view'))
+  .then(() => app.listen(process.env.PORT || 8080, () => console.log('Start listening')))
+  .catch(console.error);

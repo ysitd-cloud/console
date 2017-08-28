@@ -18,9 +18,9 @@ TemplateEngine.prototype.render = function render(opts, cb) {
   env.render(this.name, opts, cb);
 };
 
-module.exports = (app) => {
+module.exports = app => new Promise((resolve) => {
   app.set('views', './views');
   app.set('view', TemplateEngine);
   app.set('nunjecksEnv', env);
-  return app;
-};
+  resolve(app);
+});
