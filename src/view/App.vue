@@ -1,5 +1,5 @@
 <template>
-    <v-app id="app" toolbar footer>
+    <v-app id="app" toolbar footer fill-height>
         <drawer :drawer.sync="drawer"></drawer>
         <v-toolbar class="primary" dark>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
@@ -36,9 +36,11 @@
         justify-content: left
         border-bottom: 1px solid $grey.lighten-3
 
-    main > .container
-        min-height: 0 !important
-
+    main
+        min-height 80vh
+        background-color white
+        > .container
+            min-height: 0 !important
 </style>
 
 <script>
