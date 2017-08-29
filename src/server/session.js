@@ -22,7 +22,7 @@ passport.use('ycloud', new OAuth2Strategy({
   clientSecret: process.env.OAUTH_SECRET,
   callbackURL: process.env.OAUTH_CALLBACK_URL,
 }, (accessToken, refreshToken, params, profile, cb) => {
-  axios.get(`${OAUTH_HOST}/api/v1/user/${params.user}`, {
+  axios.get(`${OAUTH_HOST}/api/v1/user/info`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
@@ -41,6 +41,10 @@ passport.use('ycloud', new OAuth2Strategy({
           photos: [
             { value: response.data.avatar_url },
           ],
+          oauth: {
+            accessToken,
+            refreshToken,
+          },
         });
       }
     })
