@@ -8,6 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+require('./server/security')(app);
 require('./server/template')(app);
 
 require('./server/session')(app)
