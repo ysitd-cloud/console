@@ -3,7 +3,7 @@ const base = require('./webpack.base.conf');
 
 module.exports = merge.smart(base, {
   entry: {
-    app: ['./src/view/clientEntry.js'],
+    app: ['./src/frontend/clientEntry.js'],
   },
   output: {
     publicPath: '/',
