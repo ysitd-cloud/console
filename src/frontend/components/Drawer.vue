@@ -2,7 +2,7 @@
     <v-navigation-drawer v-model="drawerToggle" persistent light app>
         <v-toolbar flat class="transparent">
             <v-list class="pa-0">
-                <v-list-tile>
+                <v-list-tile href="https://account.ysitd.cloud/" target="_blank">
                     <v-list-tile-avatar>
                         <img :src="photo" />
                     </v-list-tile-avatar>
@@ -15,6 +15,9 @@
             </v-list>
         </v-toolbar>
         <v-list>
+            <v-list-tile href="https://account.ysitd.cloud/" target="_blank">
+                Account <v-icon>launch</v-icon>
+            </v-list-tile>
             <v-list-tile href="/auth/logout">
                 Logout
             </v-list-tile>
