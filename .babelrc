@@ -3,9 +3,9 @@
     ["env", {
       "targets": {
         "browsers": ["last 2 Firefox version", "last 2 Chrome versions"],
-        "uglify": true,
+        "uglify": true
       },
-      "modules": false,
+      "modules": false
     }],
     "stage-2"
   ],
