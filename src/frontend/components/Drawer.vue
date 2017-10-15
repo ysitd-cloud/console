@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer v-model="drawerToggle" persistent light>
+    <v-navigation-drawer v-model="drawerToggle" persistent light app>
         <v-toolbar flat class="transparent">
             <v-list class="pa-0">
                 <v-list-tile>
