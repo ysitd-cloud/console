@@ -19,6 +19,10 @@ class Apollo {
   getClient(name) {
     return this.clients[name];
   }
+
+  removeClient(name) {
+    delete this.clients[name];
+  }
 }
 
 export default {
