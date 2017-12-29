@@ -14,4 +14,4 @@
     </v-flex>
 </template>
 
-<script src="./list.js"></script>
+<script src="./script.js"></script>

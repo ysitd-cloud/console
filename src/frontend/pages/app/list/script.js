@@ -1,5 +1,5 @@
 import { mapState } from 'vuex';
-import query from './query.list.graphql';
+import query from './query.graphql';
 
 export default {
   name: 'list',
@@ -22,7 +22,7 @@ export default {
     return false;
   },
   components: {
-    ErrorCard: () => import('../../components/ErrorCard.vue'),
+    ErrorCard: () => import('../../../components/ErrorCard.vue'),
   },
   mounted() {
     this.$apollo.getClient()
