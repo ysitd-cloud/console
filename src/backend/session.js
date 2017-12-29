@@ -19,7 +19,7 @@ passport.use('ycloud', new OAuth2Strategy({
   authorizationURL: `${OAUTH_HOST}${process.env.OAUTH_AUTHORIZE_URL}`,
   tokenURL: `${OAUTH_HOST}${process.env.OAUTH_TOKEN_URL}`,
   clientID: process.env.OAUTH_CLIENT_ID,
-  clientSecret: process.env.OAUTH_SECRET,
+  clientSecret: process.env.OAUTH_CLIENT_SECRET,
   callbackURL: process.env.OAUTH_CALLBACK_URL,
 }, (accessToken, refreshToken, params, profile, cb) => {
   axios.get(`${OAUTH_HOST}/api/v1/user/info`, {
