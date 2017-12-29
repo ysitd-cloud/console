@@ -4,7 +4,6 @@ import { sync } from 'vuex-router-sync';
 import App from './App.vue';
 import createRouter from './router';
 import createStore from './store';
-import apolloPlugin from './plugins/apollo';
 
 Vue.use(Vuetify, {
   theme: {
@@ -12,7 +11,7 @@ Vue.use(Vuetify, {
   },
 });
 
-export default function (isClient = false) {
+export default function () {
   const router = createRouter();
   const store = createStore();
 
@@ -23,10 +22,6 @@ export default function (isClient = false) {
     store,
     render: h => h(App),
   });
-
-  if (isClient) {
-    Vue.use(apolloPlugin);
-  }
 
   return { app, router, store };
 }
