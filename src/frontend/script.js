@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { mapActions } from 'vuex';
+import { HttpLink } from 'apollo-link-http';
 import Drawer from './components/Drawer.vue';
 
 /* globals window */
@@ -21,10 +22,13 @@ export default {
           this.updateToken(data.token);
           window.sessionStorage.setItem('accessToken', data.token);
         });
+    } else {
+      this.updateToken(token);
     }
     axios.get('/auth/endpoint')
       .then(({ data }) => {
-        this.updateEndpoint(data.endpoint);
+        const { endpoint } = data;
+        this.updateEndpoint(endpoint);
       });
   },
   methods: mapActions({
