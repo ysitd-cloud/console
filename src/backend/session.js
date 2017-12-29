@@ -73,6 +73,10 @@ function createAuthRouter() {
   router.get('/login', (req, res) => {
     res.redirect('/auth/ycloud');
   });
+  router.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.end('Logout');
+  });
   return router;
 }
 
@@ -103,16 +107,22 @@ module.exports = app => new Promise((resolve) => {
       grant_type: 'refresh_token',
     }, (err, accessToken, refreshToken) => {
       if (err) {
+        console.error(err);
         next(err);
       } else {
         req.session.refreshToken = refreshToken;
         res.json({
           token: accessToken,
-          endpoint: process.env.API_ENDPOINT,
         });
         res.end();
       }
     });
+  });
+  app.get('/auth/endpoint', (req, res) => {
+    res.json({
+      endpoint: process.env.API_ENDPOINT,
+    });
+    res.end();
   });
 
   resolve(app);
