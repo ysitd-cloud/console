@@ -24,7 +24,7 @@ function serverDevAssets(app) {
 
   const devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: devConfig.output.publicPath,
-    quiet: true,
+    logLevel: 'silent',
   });
 
   const hotMiddleware = require('webpack-hot-middleware')(compiler, {
