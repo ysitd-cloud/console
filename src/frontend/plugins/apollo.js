@@ -9,31 +9,29 @@ class Apollo {
     this.cache = new InMemoryCache();
     const token = window.sessionStorage.getItem('accessToken');
     if (!token) {
-      axios.post('/auth/api')
-        .then(({ data }) => {
-          this.token = data.token;
-          window.sessionStorage.setItem('accessToken', data.token);
-        });
+      this.loadToken();
     } else {
       this.token = token;
     }
-    axios.get('/auth/endpoint')
-      .then(({ data }) => {
-        this.endpoint = data.endpoint;
-      });
   }
 
-  getClient() {
+  async getClient() {
     if (!this.client) {
-      this.createClient();
+      await this.createClient();
     }
 
     return this.client;
   }
 
-  createClient() {
+  async createClient() {
+    if (!this.endpoint) {
+      await this.getEndpoint();
+    }
     const link = new HttpLink({
       uri: `${this.endpoint}/graphql`,
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+      },
     });
     this.client = new ApolloClient({
       link,
@@ -41,9 +39,16 @@ class Apollo {
     });
   }
 
+  async getEndpoint() {
+    return axios.get('/auth/endpoint')
+      .then(({ data }) => {
+        this.endpoint = data.endpoint;
+      });
+  }
+
   async renewClient() {
     await this.loadToken();
-    this.createClient();
+    await this.createClient();
     return this.client;
   }
 
