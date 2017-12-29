@@ -5,7 +5,11 @@ import App from './App.vue';
 import createRouter from './router';
 import createStore from './store';
 
-Vue.use(Vuetify);
+Vue.use(Vuetify, {
+  theme: {
+    primary: '#44A148',
+  },
+});
 
 export default function () {
   const router = createRouter();
