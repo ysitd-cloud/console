@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { mapActions } from 'vuex';
-import { HttpLink } from 'apollo-link-http';
 import Drawer from './components/Drawer.vue';
 
 /* globals window */
