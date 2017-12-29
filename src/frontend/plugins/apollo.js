@@ -23,6 +23,6 @@ class Apollo {
 
 export default {
   install(Vue, options) {
-    Vue.apollo = new Apollo(options);
+    Vue.prototype.$apollo = new Apollo(options);
   },
 };
