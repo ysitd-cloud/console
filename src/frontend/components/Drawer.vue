@@ -19,6 +19,9 @@
                     <v-spacer />
                     <v-icon>launch</v-icon>
                 </v-list-tile>
+                <v-list-tile v-else :key="link.to" :to="link.to">
+                    <span>{{ link.display }}</span>
+                </v-list-tile>
             </template>
             <v-divider></v-divider>
             <v-list-tile href="/auth/logout">Logout</v-list-tile>
@@ -62,6 +65,7 @@
           links: [
             { href: 'https://account.ysitd.cloud/', external: true, display: 'Account' },
             { href: 'https://health.ysitd.cloud/', external: true, display: 'Service Health' },
+            { to: { name: 'app.list' }, display: 'App' },
           ],
         };
       },
