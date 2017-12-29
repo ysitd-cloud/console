@@ -15,7 +15,7 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-passport.use('ycloud', new OAuth2Strategy({
+const strategy = new OAuth2Strategy({
   authorizationURL: `${OAUTH_HOST}${process.env.OAUTH_AUTHORIZE_URL}`,
   tokenURL: `${OAUTH_HOST}${process.env.OAUTH_TOKEN_URL}`,
   clientID: process.env.OAUTH_CLIENT_ID,
@@ -49,7 +49,9 @@ passport.use('ycloud', new OAuth2Strategy({
       }
     })
     .catch(cb);
-}));
+});
+
+passport.use('ycloud', strategy);
 
 function loginGuard(req, res, next) {
   if (!req.user) {
@@ -92,6 +94,25 @@ module.exports = app => new Promise((resolve) => {
   app.use('/auth', createAuthRouter());
 
   app.use(loginGuard);
+
+  app.post('/auth/token', (req, res, next) => {
+    // eslint-disable-next-line no-underscore-dangle
+    const oauth2Client = strategy._oauth2;
+    const token = 'refreshToken' in req.session ? req.session.refreshToken : req.user.oauth.refreshToken;
+    oauth2Client.getOAuthAccessToken(token, {
+      grant_type: 'refresh_token',
+    }, (err, accessToken, refreshToken) => {
+      if (err) {
+        next(err);
+      } else {
+        req.session.refreshToken = refreshToken;
+        res.json({
+          token: accessToken,
+        });
+        res.end();
+      }
+    });
+  });
 
   resolve(app);
 });
