@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex, { Store } from 'vuex';
 import user from './user';
+import env from './env';
 
 Vue.use(Vuex);
 
@@ -11,6 +12,7 @@ export default function () {
     mutations: {},
     modules: {
       user,
+      env,
     },
   });
 }
