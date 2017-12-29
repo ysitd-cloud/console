@@ -95,7 +95,7 @@ module.exports = app => new Promise((resolve) => {
 
   app.use(loginGuard);
 
-  app.post('/auth/token', (req, res, next) => {
+  app.post('/auth/api', (req, res, next) => {
     // eslint-disable-next-line no-underscore-dangle
     const oauth2Client = strategy._oauth2;
     const token = 'refreshToken' in req.session ? req.session.refreshToken : req.user.oauth.refreshToken;
@@ -108,6 +108,7 @@ module.exports = app => new Promise((resolve) => {
         req.session.refreshToken = refreshToken;
         res.json({
           token: accessToken,
+          endpoint: process.env.API_ENDPOINT,
         });
         res.end();
       }
