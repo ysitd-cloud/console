@@ -4,9 +4,6 @@ export default context => new Promise((resolve, reject) => {
   const { app, router, store } = createApp();
 
   store.dispatch('user/update', context.user);
-  store.dispatch('oauth/refreshToken', {
-    accessToken: context.user.oauth.accessToken,
-  });
 
   context.meta = app.$meta();
 
