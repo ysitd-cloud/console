@@ -1,6 +1,6 @@
 import createApp from './app';
 
-const { app, router, store } = createApp();
+const { app, router, store } = createApp(true);
 
 /* global window */
 /* eslint-disable no-underscore-dangle */
