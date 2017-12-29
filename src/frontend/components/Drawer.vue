@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer v-model="drawerToggle" persistent light app>
+    <v-navigation-drawer v-model="drawerToggle" fixed light app>
         <v-toolbar flat class="transparent">
             <v-list class="pa-0">
                 <v-list-tile href="https://account.ysitd.cloud/" target="_blank">
@@ -20,8 +20,8 @@
                     <v-icon>launch</v-icon>
                 </v-list-tile>
             </template>
-            <v-list-tile href="/auth/logout">Logout</v-list-tile>
             <v-divider></v-divider>
+            <v-list-tile href="/auth/logout">Logout</v-list-tile>
         </v-list>
     </v-navigation-drawer>
 </template>

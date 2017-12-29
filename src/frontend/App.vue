@@ -6,15 +6,13 @@
             <v-toolbar-title>YSITD Cloud</v-toolbar-title>
             <v-spacer></v-spacer>
         </v-toolbar>
-        <main>
+        <v-content>
             <v-container fluid>
-                <v-content>
-                    <transition name="fade-transition">
-                        <router-view></router-view>
-                    </transition>
-                </v-content>
+                <transition name="fade-transition">
+                    <router-view></router-view>
+                </transition>
             </v-container>
-        </main>
+        </v-content>
         <v-footer class="primary" app>
             <span class="white--text">&copy; YSITD Cloud</span>
         </v-footer>
