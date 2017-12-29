@@ -10,6 +10,7 @@ export default function () {
     mode: 'history',
     routes: [
       { path: '/', component: () => import('../pages/Home.vue') },
+      { path: '/app', component: () => import('../pages/app/List.vue') },
     ],
   });
 }
