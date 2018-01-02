@@ -19,7 +19,7 @@
                     <v-spacer />
                     <v-icon>launch</v-icon>
                 </v-list-tile>
-                <v-list-tile v-else :key="link.to" :to="link.to">
+                <v-list-tile v-else :key="link.display" :to="link.to">
                     <span>{{ link.display }}</span>
                 </v-list-tile>
             </template>
