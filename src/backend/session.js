@@ -74,7 +74,7 @@ function createAuthRouter() {
     res.redirect('/auth/ycloud');
   });
   router.get('/logout', (req, res) => {
-    req.session.destroy();
+    req.logout();
     res.end('Logout');
   });
   return router;
@@ -84,7 +84,7 @@ module.exports = app => new Promise((resolve) => {
   app.use(session({
     store: new RedisStore({
       host: process.env.REDIS_HOST || 'localhost',
-      db: parseInt(process.env.REDIS_DB, 10),
+      db: parseInt(process.env.REDIS_DB, 10) || 0,
     }),
     secret: process.env.SESSION_SECRET,
     name: process.env.SESSION_NAME,
