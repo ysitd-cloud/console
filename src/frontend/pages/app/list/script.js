@@ -29,17 +29,19 @@ export default {
     finishState: 'process/finishState',
   }),
   async mounted() {
-    let id = await this.createState('Loading client');
-    console.log(id);
-    const client = await this.$apollo.getClient()
-    this.finishState(id);
+    try {
+      let id = await this.createState('Loading client');
+      const client = await this.$apollo.getClient();
+      this.finishState(id);
 
-    id = await this.createState('Sending Query');
-    console.log(id);
-    const { data } = await client.query({ query, variables: { username: this.username } });
-    this.finishState(id);
+      id = await this.createState('Sending Query');
+      const { data } = await client.query({query, variables: {username: this.username}});
+      this.finishState(id);
 
-    this.apps = data.user.apps;
-    this.ready = true;
+      this.apps = data.user.apps;
+      this.ready = true;
+    } catch (e) {
+      this.errorCaptured(e, this, e.getMessage());
+    }
   },
 };
