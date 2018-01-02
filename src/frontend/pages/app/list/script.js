@@ -35,7 +35,7 @@ export default {
       this.finishState(id);
 
       id = await this.createState('Sending Query');
-      const { data } = await client.query({query, variables: {username: this.username}});
+      const { data } = await client.query({ query, variables: { username: this.username } });
       this.finishState(id);
 
       this.apps = data.user.apps;
