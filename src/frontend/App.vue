@@ -16,6 +16,7 @@
         <v-footer class="primary" app>
             <span class="white--text">&copy; YSITD Cloud</span>
         </v-footer>
+        <status-bar></status-bar>
     </v-app>
 </template>
 

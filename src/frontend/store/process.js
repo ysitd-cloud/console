@@ -10,10 +10,11 @@ const ADD_STATE = 'ADD_STATE';
 const REMOVE_STATE = 'REMOVE_STATE';
 
 export default {
+  namespaced: true,
   state: {
     states: [],
   },
-  getter: {
+  getters: {
     current(state) {
       const { states } = state;
       return states[states.length - 1];
@@ -31,13 +32,16 @@ export default {
     },
   },
   actions: {
-    createState({ commit }, message, type) {
-      const key = `${message}-${Date.now().getTime()}`;
+    createState({ commit }, message, type = 'info') {
+      const key = `${message}-${Date.now()}`;
       commit(ADD_STATE, new State(key, message, type));
       return key;
     },
     finishState({ commit }, key) {
       commit(REMOVE_STATE, key);
+    },
+    endCurrent({ commit, getters }) {
+      commit(REMOVE_STATE, getters.current.id);
     },
   },
 };

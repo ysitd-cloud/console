@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex, { Store } from 'vuex';
 import user from './user';
 import env from './env';
+import process from './process';
 
 Vue.use(Vuex);
 
@@ -13,6 +14,7 @@ export default function () {
     modules: {
       user,
       env,
+      process,
     },
   });
 }

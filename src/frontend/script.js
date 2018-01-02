@@ -1,12 +1,14 @@
 import axios from 'axios';
 import { mapActions } from 'vuex';
 import Drawer from './components/Drawer.vue';
+import StatusBar from './components/StatusBar.vue';
 
 /* globals window */
 
 export default {
   components: {
     Drawer,
+    StatusBar,
   },
   data() {
     return {

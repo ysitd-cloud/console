@@ -1,4 +1,4 @@
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import query from './query.graphql';
 
 export default {
@@ -24,12 +24,22 @@ export default {
   components: {
     ErrorCard: () => import('../../../components/ErrorCard.vue'),
   },
-  mounted() {
-    this.$apollo.getClient()
-      .then(client => client.query({ query, variables: { username: this.username } }))
-      .then(({ data }) => {
-        this.apps = data.user.apps;
-        this.ready = true;
-      });
+  methods: mapActions({
+    createState: 'process/createState',
+    finishState: 'process/finishState',
+  }),
+  async mounted() {
+    let id = await this.createState('Loading client');
+    console.log(id);
+    const client = await this.$apollo.getClient()
+    this.finishState(id);
+
+    id = await this.createState('Sending Query');
+    console.log(id);
+    const { data } = await client.query({ query, variables: { username: this.username } });
+    this.finishState(id);
+
+    this.apps = data.user.apps;
+    this.ready = true;
   },
 };
