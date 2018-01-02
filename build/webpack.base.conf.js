@@ -2,6 +2,7 @@ const vueConf = require('./vue-loader.conf');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
+  devtool: 'source-map',
   plugins: [
     new ProgressBarPlugin(),
   ],
