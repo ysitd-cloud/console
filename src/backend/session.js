@@ -3,7 +3,7 @@ const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 const axios = require('axios');
 const passport = require('passport');
-const { OAuth2Strategy } = require('passport-oauth');
+const OAuth2Strategy = require('passport-oauth2');
 
 const { OAUTH_HOST } = process.env;
 

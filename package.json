@@ -33,7 +33,7 @@
     "morgan": "^1.9.0",
     "nunjucks": "^3.0.1",
     "passport": "^0.4.0",
-    "passport-oauth": "^1.0.0",
+    "passport-oauth2": "^1.4.0",
     "serve-static": "^1.12.4",
     "vue": "^2.4.2",
     "vue-meta": "^1.1.0",
