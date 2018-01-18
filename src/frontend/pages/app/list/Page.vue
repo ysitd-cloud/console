@@ -5,7 +5,7 @@
                 <h3 class="mb-0">App</h3>
             </v-card-title>
             <v-list v-if="apps && apps.length > 0">
-                <v-list-tile v-for="app in apps" :key="app.id">
+                <v-list-tile v-for="app in apps" :key="app.id" :to="{name: 'app.get', params: { id: app.id } }">
                     <v-list-tile-content>
                         <v-list-tile-title>{{ app.name }}</v-list-tile-title>
                     </v-list-tile-content>
