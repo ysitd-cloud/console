@@ -11,6 +11,9 @@ export default function () {
     routes: [
       { path: '/', component: () => import('../pages/Home.vue') },
       { name: 'app.list', path: '/app', component: () => import('../pages/app/list/Page.vue') },
+      {
+        name: 'app.get', path: '/app/:id', component: () => import('../pages/app/get/Page.vue'), props: true,
+      },
     ],
   });
 }

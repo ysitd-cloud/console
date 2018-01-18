@@ -1,28 +1,30 @@
-import { mapState, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 import query from './query.graphql';
 
 export default {
-  name: 'list',
+  name: 'getApplication',
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       ready: false,
       error: null,
-      apps: [],
+      app: null,
     };
   },
-  computed: {
-    ...mapState({
-      username: state => state.user.id,
-    }),
+  components: {
+    ErrorCard: () => import('../../../components/ErrorCard.vue'),
+    HidableText: () => import('../../../components/HidableText.vue'),
   },
   errorCaptured(err, vm, info) {
     this.error = `${err.stack}\n\nfound in ${info} of component`;
     console.error(this.error);
     console.error('VM: ', vm);
     return false;
-  },
-  components: {
-    ErrorCard: () => import('../../../components/ErrorCard.vue'),
   },
   methods: mapActions({
     createState: 'process/createState',
@@ -35,14 +37,14 @@ export default {
       this.finishState(id);
 
       id = await this.createState('Sending Query');
-      const { data } = await client.query({ query, variables: { username: this.username } });
+      const { data } = await client.query({ query, variables: { id: this.id } });
       this.finishState(id);
 
-      this.apps = data.user.apps;
+      this.app = data.app;
       this.ready = true;
     } catch (e) {
-      this.errorCaptured(e, this, e.getMessage());
       await this.createState('Error Occur', 'error');
+      throw e;
     }
   },
 };

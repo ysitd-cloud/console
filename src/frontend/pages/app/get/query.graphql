@@ -1,0 +1,17 @@
+query ($id: String!) {
+    app(id: $id) {
+        id
+        name
+        deployment {
+            image
+            tag
+        }
+        environment {
+            key
+            value
+        }
+        network {
+            domain
+        }
+    }
+}
