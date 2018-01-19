@@ -32,7 +32,17 @@ export default {
     },
   },
   actions: {
-    createState({ commit }, message, type = 'info') {
+    createState({ commit }, opt) {
+      let type = 'info';
+      let message;
+      if (typeof opt === 'string') {
+        message = opt;
+      } else {
+        const msg = opt.message;
+        const realType = opt.type;
+        type = realType;
+        message = msg;
+      }
       const key = `${message}-${Date.now()}`;
       commit(ADD_STATE, new State(key, message, type));
       return key;

@@ -3,7 +3,7 @@
         <v-slide-y-reverse-transition>
             <div class="snack__content" v-if="display">
                 <span class="white--text">{{ message }}</span>
-                <v-progress-circular indeterminate color="white"></v-progress-circular>
+                <v-progress-circular indeterminate color="white" v-if="display && current.type !== 'error'"></v-progress-circular>
             </div>
         </v-slide-y-reverse-transition>
     </div>
