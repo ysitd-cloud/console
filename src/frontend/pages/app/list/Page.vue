@@ -4,6 +4,7 @@
             <v-card-title>
                 <h3 class="mb-0">App</h3>
             </v-card-title>
+            <v-divider></v-divider>
             <v-list v-if="apps && apps.length > 0">
                 <v-list-tile v-for="app in apps" :key="app.id" :to="{name: 'app.get', params: { id: app.id } }">
                     <v-list-tile-content>

@@ -4,6 +4,7 @@
             <v-card-title>
                 <h3 class="mb-0">{{ app.name }}</h3>
             </v-card-title>
+            <v-divider></v-divider>
             <v-card-text class="pb-0">
                 <p>
                     Image: <v-chip>{{ app.deployment.image }}:{{ app.deployment.tag }}</v-chip>
@@ -12,6 +13,7 @@
                     Network: <a :href="`http://${app.network.domain}`" target="_blank">{{ app.network.domain }}</a>
                 </p>
             </v-card-text>
+            <div class="pl-3">Environment</div>
             <v-data-table :headers="[ { text: 'Name', value: 'key', align: 'left' }, { text: 'Value', value: 'value', align: 'left' } ]" :items="app.environment" hide-actions>
                 <template slot="items" slot-scope="props">
                     <td>{{ props.item.key }}</td>
