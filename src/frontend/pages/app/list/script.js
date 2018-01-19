@@ -41,8 +41,10 @@ export default {
       this.apps = data.user.apps;
       this.ready = true;
     } catch (e) {
-      this.errorCaptured(e, this, e.getMessage());
-      await this.createState('Error Occur', 'error');
+      await this.createState({ message: 'Error Occur', type: 'error' });
+      this.error = `${e.stack}\n\nfound in ${e.toString()} of component`;
+      console.error(this.error);
+      console.error('VM: ', this);
     }
   },
 };
