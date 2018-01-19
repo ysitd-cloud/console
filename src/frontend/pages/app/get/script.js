@@ -43,7 +43,7 @@ export default {
       this.app = data.app;
       this.ready = true;
     } catch (e) {
-      await this.createState({ message: 'Error Occur', type: 'error'});
+      await this.createState({ message: 'Error Occur', type: 'error' });
       this.error = `${e.stack}\n\nfound in ${e.toString()} of component`;
       console.error(this.error);
       console.error('VM: ', this.$vm);
