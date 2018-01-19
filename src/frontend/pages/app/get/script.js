@@ -14,6 +14,8 @@ export default {
       ready: false,
       error: null,
       app: null,
+      subscription: null,
+      eventID: null,
     };
   },
   components: {
@@ -29,24 +31,52 @@ export default {
   methods: mapActions({
     createState: 'process/createState',
     finishState: 'process/finishState',
-  }),
-  async mounted() {
-    try {
-      let id = await this.createState('Loading client');
+    async loadClient() {
+      console.debug('Load Client');
+      const id = await this.createState('Loading client');
       const client = await this.$apollo.getClient();
       this.finishState(id);
+      return client;
+    },
+    async loadApp() {
+      const client = await this.loadClient();
 
-      id = await this.createState('Sending Query');
-      const { data } = await client.query({ query, variables: { id: this.id } });
-      this.finishState(id);
+      const observer = client.watchQuery({
+        query,
+        variables: {
+          id: this.id,
+        },
+        options: {
+          fetchPolicy: 'network-and-cache',
+        },
+      });
 
+      this.eventID = await this.createState('Sending Query');
+      observer.subscribe(
+        result => this.handleResult(result),
+        async (e) => {
+          await this.createState({ message: 'Error Occur', type: 'error' });
+          this.error = `${e.stack}\n\nfound in ${e.toString()} of component`;
+          console.error(this.error);
+          console.error('VM: ', this.$vm);
+        },
+      );
+    },
+    handleResult(_, { data, loading }) {
       this.app = data.app;
-      this.ready = true;
-    } catch (e) {
-      await this.createState({ message: 'Error Occur', type: 'error' });
-      this.error = `${e.stack}\n\nfound in ${e.toString()} of component`;
-      console.error(this.error);
-      console.error('VM: ', this.$vm);
+      this.ready = !loading;
+      this.finishState(this.eventID);
+      this.eventID = null;
+    },
+  }),
+  async mounted() {
+    this.loadApp();
+  },
+  beforeDestroy() {
+    this.eventID = null;
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+      this.subscription = null;
     }
   },
 };

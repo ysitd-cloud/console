@@ -1,5 +1,11 @@
 <template>
     <v-flex xs12>
+        <v-btn color="info" :to="{ name: 'app.list' }">
+            <v-icon left>keyboard_arrow_left</v-icon>Back
+        </v-btn>
+        <v-btn @click="loadApp" :disabled="!ready" v-if="!error">
+            <v-icon>cached</v-icon>Refresh
+        </v-btn>
         <v-card v-if="ready && !error && app != null">
             <v-card-title>
                 <h3 class="mb-0">{{ app.name }}</h3>
