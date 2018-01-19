@@ -27,6 +27,9 @@ class Apollo {
     if (!this.endpoint) {
       await this.getEndpoint();
     }
+    if (!this.token) {
+      await this.loadToken();
+    }
     const link = new HttpLink({
       uri: `${this.endpoint}/graphql`,
       headers: {
