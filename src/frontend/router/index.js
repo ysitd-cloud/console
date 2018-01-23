@@ -15,6 +15,7 @@ export default function () {
       {
         name: 'app.get', path: '/app/:id', component: () => import('../pages/app/get/Page.vue'), props: true,
       },
+      { name: 'account.get', path: '/account', component: () => import('../pages/account/get/wrapper') },
     ],
   });
 }
