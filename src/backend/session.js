@@ -80,12 +80,18 @@ function createAuthRouter() {
   return router;
 }
 
-module.exports = app => new Promise((resolve) => {
-  app.use(session({
-    store: new RedisStore({
+module.exports = (app) => {
+  let store;
+  if (process.env.NODE_ENV === 'production') {
+    store = new RedisStore({
       host: process.env.REDIS_HOST || 'localhost',
       db: parseInt(process.env.REDIS_DB, 10) || 0,
-    }),
+    });
+  } else {
+    store = new session.MemoryStore();
+  }
+  app.use(session({
+    store,
     secret: process.env.SESSION_SECRET,
     name: process.env.SESSION_NAME,
     resave: false,
@@ -125,5 +131,4 @@ module.exports = app => new Promise((resolve) => {
     res.end();
   });
 
-  resolve(app);
-});
+};

@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 require('./security')(app);
 require('./template')(app);
 
-require('./session')(app)
-  .then(require('./assets'))
+require('./session')(app);
+require('./assets')(app)
   .then(require('./view'))
   .then(() => app.listen(process.env.PORT || 8080, () => console.log('Start listening')))
   .catch(console.error);
