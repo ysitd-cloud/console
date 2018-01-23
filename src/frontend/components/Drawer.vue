@@ -1,17 +1,6 @@
 <template>
     <v-navigation-drawer v-model="drawerToggle" fixed light app>
-        <v-toolbar flat class="transparent">
-            <v-list class="pa-0">
-                <v-list-tile href="https://account.ysitd.cloud/" target="_blank">
-                    <v-list-tile-avatar>
-                        <img :src="photo" />
-                    </v-list-tile-avatar>
-                    <v-list-tile-content>
-                        <v-list-tile-title>{{ displayName }}</v-list-tile-title>
-                    </v-list-tile-content>
-                </v-list-tile>
-            </v-list>
-        </v-toolbar>
+        <drawer-toolbar :photo="photo" :displayName="displayName"></drawer-toolbar>
         <v-list>
             <template v-for="link in links">
                 <v-list-tile v-if="link.external" :key="link.href" :href="link.href" target="_blank">
@@ -28,16 +17,13 @@
         </v-list>
     </v-navigation-drawer>
 </template>
-
-<style scoped lang="stylus">
-    .list__tile--link .icon
-        font-size: 1rem
-</style>
-
 <script>
     import { mapState, mapGetters } from 'vuex';
 
     export default {
+      components: {
+        DrawerToolbar: () => import('./DrawerToolbar.vue'),
+      },
       props: {
         drawer: {
           type: Boolean,
