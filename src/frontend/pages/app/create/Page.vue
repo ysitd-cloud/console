@@ -71,7 +71,7 @@
 
             <v-layout row>
                 <v-flex xs12>
-                    <v-btn primary type="submit">
+                    <v-btn color="primary" type="submit">
                         <v-icon left>unarchive</v-icon>
                         Deploy
                     </v-btn>
