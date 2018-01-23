@@ -1,9 +1,7 @@
-import axios from 'axios';
 import { mapActions } from 'vuex';
 import Drawer from './components/Drawer.vue';
 import StatusBar from './components/StatusBar.vue';
 
-/* globals window */
 
 export default {
   components: {
@@ -14,23 +12,6 @@ export default {
     return {
       drawer: false,
     };
-  },
-  mounted() {
-    const token = window.sessionStorage.getItem('accessToken');
-    if (!token) {
-      axios.post('/auth/api')
-        .then(({ data }) => {
-          this.updateToken(data.token);
-          window.sessionStorage.setItem('accessToken', data.token);
-        });
-    } else {
-      this.updateToken(token);
-    }
-    axios.get('/auth/endpoint')
-      .then(({ data }) => {
-        const { endpoint } = data;
-        this.updateEndpoint(endpoint);
-      });
   },
   methods: mapActions({
     updateEndpoint: 'env/updateEndpoint',
