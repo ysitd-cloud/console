@@ -50,7 +50,7 @@
       data() {
         return {
           links: [
-            { href: 'https://account.ysitd.cloud/', external: true, display: 'Account' },
+            { to: { name: 'account.get' }, display: 'Account' },
             { href: 'https://health.ysitd.cloud/', external: true, display: 'Service Health' },
             { to: { name: 'app.list' }, display: 'App' },
           ],
