@@ -12,5 +12,12 @@
   "plugins": [
     "transform-runtime",
     "syntax-dynamic-import"
-  ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        ["env", { "targets": { "node": "current" }}]
+      ]
+    }
+  }
 }
