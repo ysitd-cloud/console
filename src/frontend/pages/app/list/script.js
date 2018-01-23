@@ -27,24 +27,30 @@ export default {
   methods: mapActions({
     createState: 'process/createState',
     finishState: 'process/finishState',
+    async loadApps() {
+      try {
+        let id = await this.createState('Loading client');
+        const client = await this.$apollo.getClient();
+        this.finishState(id);
+
+        id = await this.createState('Sending Query');
+        const { data } = await client.query({
+          query,
+          variables: { username: this.username },
+        });
+        this.finishState(id);
+
+        this.apps = data.user.apps;
+        this.ready = true;
+      } catch (e) {
+        await this.createState({ message: 'Error Occur', type: 'error' });
+        this.error = `${e.stack}\n\nfound in ${e.toString()} of component`;
+        console.error(this.error);
+        console.error('VM: ', this);
+      }
+    },
   }),
   async mounted() {
-    try {
-      let id = await this.createState('Loading client');
-      const client = await this.$apollo.getClient();
-      this.finishState(id);
-
-      id = await this.createState('Sending Query');
-      const { data } = await client.query({ query, variables: { username: this.username } });
-      this.finishState(id);
-
-      this.apps = data.user.apps;
-      this.ready = true;
-    } catch (e) {
-      await this.createState({ message: 'Error Occur', type: 'error' });
-      this.error = `${e.stack}\n\nfound in ${e.toString()} of component`;
-      console.error(this.error);
-      console.error('VM: ', this);
-    }
+    this.loadApps();
   },
 };
