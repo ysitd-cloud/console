@@ -98,6 +98,12 @@
     "snapshotSerializers": [
       "<rootDir>/node_modules/jest-serializer-vue"
     ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/frontend/**/*.{js,vue}",
+      "!**/node_modules/**"
+    ],
+    "coverageReporters": ["html", "text-summary"],
     "mapCoverage": true
   }
 }
