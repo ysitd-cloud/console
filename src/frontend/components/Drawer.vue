@@ -19,10 +19,11 @@
 </template>
 <script>
     import { mapState, mapGetters } from 'vuex';
+    import DrawerToolbar from './DrawerToolbar.vue';
 
     export default {
       components: {
-        DrawerToolbar: () => import('./DrawerToolbar.vue'),
+        DrawerToolbar,
       },
       props: {
         drawer: {

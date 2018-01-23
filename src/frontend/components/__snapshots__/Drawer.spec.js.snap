@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component DrawerToolbar matches snapshot for display 1`] = `
+<v-navigation-drawer fixed="" light="" app="">
+    <!---->
+    <v-list>
+        <v-list-tile href="https://account.ysitd.cloud/" target="_blank"><span>Account</span>
+            <v-spacer></v-spacer>
+            <v-icon>launch</v-icon>
+        </v-list-tile>
+        <v-list-tile href="https://health.ysitd.cloud/" target="_blank"><span>Service Health</span>
+            <v-spacer></v-spacer>
+            <v-icon>launch</v-icon>
+        </v-list-tile>
+        <v-list-tile to="[object Object]"><span>App</span></v-list-tile>
+        <v-divider></v-divider>
+        <v-list-tile href="/auth/logout">Logout</v-list-tile>
+    </v-list>
+</v-navigation-drawer>
+`;
