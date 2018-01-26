@@ -1,7 +1,7 @@
 <template functional>
     <v-toolbar flat class="transparent">
         <v-list class="pa-0">
-            <v-list-tile href="https://account.ysitd.cloud/" target="_blank">
+            <v-list-tile :to="{ name: 'account.get' }" target="_blank">
                 <v-list-tile-avatar>
                     <img :src="props.photo" />
                 </v-list-tile-avatar>
