@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../../../components/react/Card';
+import Flex from '../../../components/react/Flex';
 
 export default function UserCard({ avatarUrl, displayName, username }) {
   return (
     <Card>
       <div className="layout row">
-        <div className="flex xs12 md2 lg1">
+        <Flex className="xs12 md2 lg1">
           <img src={avatarUrl} alt="Avatar Icon" style={{ minHeight: '50px' }} />
-        </div>
-        <div className="flex xs12 md8 lg11">
+        </Flex>
+        <Flex className="xs12 md8 lg11">
           <div className="card__title pb-0">
             <div className="headline mb-0">
               <span className="bold">Name: </span>{ displayName }
@@ -18,7 +19,7 @@ export default function UserCard({ avatarUrl, displayName, username }) {
           <div className="card__text pt-1">
             <div><span className="bold">Username: </span>{ username }</div>
           </div>
-        </div>
+        </Flex>
       </div>
     </Card>
   );
