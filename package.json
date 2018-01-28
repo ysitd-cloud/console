@@ -85,7 +85,7 @@
     "shelljs": "^0.7.8",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
-    "vue-jest": "^1.4.0",
+    "vue-jest": "^2.0.0",
     "vue-loader": "^13.0.4",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.4.2",
