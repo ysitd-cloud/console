@@ -80,6 +80,7 @@
     "nodemon": "^1.12.1",
     "optimize-css-assets-webpack-plugin": "^3.1.1",
     "progress-bar-webpack-plugin": "^1.10.0",
+    "react-test-renderer": "^16.2.0",
     "shelljs": "^0.7.8",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
@@ -96,6 +97,7 @@
   "jest": {
     "moduleFileExtensions": [
       "js",
+      "jsx",
       "vue"
     ],
     "moduleNameMapper": {
@@ -103,6 +105,7 @@
     },
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.jsx$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
     },
     "snapshotSerializers": [
@@ -110,7 +113,7 @@
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/frontend/**/*.{js,vue}",
+      "src/frontend/**/*.{js,jsx,vue}",
       "!**/node_modules/**"
     ],
     "coverageReporters": [

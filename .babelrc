@@ -17,7 +17,13 @@
   "env": {
     "test": {
       "presets": [
-        ["env", { "targets": { "node": "current" }}]
+        ["env", { "targets": { "node": "current" }}],
+        "stage-2",
+        "react"
+      ],
+      "plugins": [
+        "transform-runtime",
+        "syntax-dynamic-import"
       ]
     }
   }
