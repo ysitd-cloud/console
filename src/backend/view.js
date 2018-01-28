@@ -9,7 +9,7 @@ const { IS_PRODUCTION } = require('./config');
 const bundleCache = require.resolve('../../dist/vue-ssr-server-bundle.json');
 let renderer;
 
-const assetsNames = ['manifest', 'vendor', 'app'];
+const assetsNames = ['manifest', 'vendor', 'elements', 'app'];
 const styles = assetsNames.reduce((links, name) => {
   if (name in assets && 'css' in assets[name]) {
     links.push(assets[name].css);

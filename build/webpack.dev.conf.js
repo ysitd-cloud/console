@@ -9,6 +9,7 @@ const utils = require('./utils');
 module.exports = merge.smart(base, {
   entry: {
     app: ['./build/dev-client.js'],
+    elements: ['./build/dev-client.js'],
   },
   module: {
     rules: utils.styleLoaders({ sourceMap: true }),
