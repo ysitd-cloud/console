@@ -1,6 +1,6 @@
 import { mapActions } from 'vuex';
-import Drawer from './components/Drawer.vue';
-import StatusBar from './components/StatusBar.vue';
+import Drawer from './components/vue/Drawer.vue';
+import StatusBar from './components/vue/StatusBar.vue';
 
 
 export default {

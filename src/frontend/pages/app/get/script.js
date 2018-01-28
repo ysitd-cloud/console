@@ -19,8 +19,8 @@ export default {
     };
   },
   components: {
-    ErrorCard: () => import('../../../components/ErrorCard.vue'),
-    HidableText: () => import('../../../components/HidableText.vue'),
+    ErrorCard: () => import('../../../components/vue/ErrorCard.vue'),
+    HidableText: () => import('../../../components/vue/HidableText.vue'),
   },
   errorCaptured(err, vm, info) {
     this.error = `${err.stack}\n\nfound in ${info} of component`;

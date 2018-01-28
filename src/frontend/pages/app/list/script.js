@@ -16,7 +16,7 @@ export default {
     },
   },
   components: {
-    ErrorCard: () => import('../../../components/ErrorCard.vue'),
+    ErrorCard: () => import('../../../components/vue/ErrorCard.vue'),
     AppList: () => import('./AppList.vue'),
   },
 };
