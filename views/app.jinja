@@ -8,7 +8,6 @@
     {%- endfor  -%}
 </head><body>
 {{- html | safe -}}
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/document-register-element/1.5.0/document-register-element.js"></script>
 <script defer>window.__INITIAL_STATE__={{-  state | safe -}}</script>
 {%- for script in scripts  -%}
     <script defer src="{{- script -}}"></script>
