@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../../../components/react/Card';
 import Flex from '../../../components/react/Flex';
+import Row from '../../../components/react/Row';
 
 export default function UserCard({ avatarUrl, displayName, username }) {
   return (
     <Card>
-      <div className="layout row">
+      <Row>
         <Flex className="xs12 md2 lg1">
           <img src={avatarUrl} alt="Avatar Icon" style={{ minHeight: '50px' }} />
         </Flex>
@@ -20,7 +21,7 @@ export default function UserCard({ avatarUrl, displayName, username }) {
             <div><span className="bold">Username: </span>{ username }</div>
           </div>
         </Flex>
-      </div>
+      </Row>
     </Card>
   );
 }
