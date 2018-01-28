@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`React ProgressLinear Component match snapshot 1`] = `
+<div
+  className="progress-linear__bar"
+  style={
+    Object {
+      "height": "7px",
+    }
+  }
+>
+  <div
+    className="primary progress-linear__background"
+    style={
+      Object {
+        "height": "auto",
+        "opacity": 0.3,
+        "width": "100%",
+      }
+    }
+  />
+  <div
+    className="progress-linear__bar"
+    style={Object {}}
+  >
+    <div
+      className="progress-linear__bar__indeterminate progress-linear__bar__indeterminate--active"
+    >
+      <div
+        className="progress-linear__bar__indeterminate long primary"
+      />
+      <div
+        className="progress-linear__bar__indeterminate short primary"
+      />
+    </div>
+  </div>
+</div>
+`;

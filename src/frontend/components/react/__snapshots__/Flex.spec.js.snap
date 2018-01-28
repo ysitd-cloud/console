@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`React Flex Component match snapshot 1`] = `
+<div
+  className="flex xs12"
+  style={Object {}}
+>
+  foo
+</div>
+`;
