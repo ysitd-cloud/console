@@ -3,20 +3,18 @@ import { graphql } from 'react-apollo';
 import query from './query.graphql';
 import dataProps from '../../../common/react-apollo-props';
 import ProgressLinear from '../../../components/react/ProgressLinear';
+import Flex from '../../../components/react/Flex';
 import UserCard from './UserCard';
 
 export function Page({ data }) {
-  if (data.loading) {
-    return <ProgressLinear indeterminate />;
-  }
   return (
-    <div className="flex xs12">
-      <UserCard
+    <Flex className="xs12">
+      {data.loading ? <ProgressLinear indeterminate /> : <UserCard
         username={data.user.username}
         avatarUrl={data.user.avatarUrl}
         displayName={data.user.displayName}
-      />
-    </div>
+      />}
+    </Flex>
   );
 }
 
