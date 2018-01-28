@@ -22,8 +22,12 @@ class Apollo {
     }
   }
 
+  isClientReady() {
+    return this.client && !tokenExpire(this.issue);
+  }
+
   async getClient() {
-    if (!this.client || tokenExpire(this.issue)) {
+    if (!this.isClientReady()) {
       await this.createClient();
     }
 
@@ -46,6 +50,19 @@ class Apollo {
     this.client = new ApolloClient({
       link,
       cache: this.cache,
+      defaultOptions: {
+        watchQuery: {
+          fetchPolicy: 'cache-and-network',
+          errorPolicy: 'ignore',
+        },
+        query: {
+          fetchPolicy: 'network-only',
+          errorPolicy: 'all',
+        },
+        mutate: {
+          errorPolicy: 'all',
+        },
+      },
     });
   }
 
@@ -73,8 +90,10 @@ class Apollo {
   }
 }
 
+export const defaultClient = new Apollo();
+
 export default {
   install(Vue) {
-    Vue.prototype.$apollo = new Apollo();
+    Vue.prototype.$apollo = defaultClient;
   },
 };

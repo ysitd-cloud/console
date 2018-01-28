@@ -8,10 +8,13 @@ module.exports = merge.smart(base, {
   output: {
     publicPath: '/',
   },
+  resolve: {
+    extensions: ['.jsx', '.js', '.json'],
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [
           {

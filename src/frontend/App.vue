@@ -26,6 +26,9 @@
     ul.breadcrumbs
         justify-content: left
         border-bottom: 1px solid $grey.lighten-3
+
+    .bold
+        font-weight: 500
 </style>
 
 <script src="./script.js"></script>

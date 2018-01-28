@@ -5,6 +5,10 @@ import App from './App.vue';
 import createRouter from './router';
 import createStore from './store';
 
+Vue.config.ignoredElements = [
+  /^react-/,
+];
+
 Vue.use(Vuetify, {
   theme: {
     primary: '#44A148',

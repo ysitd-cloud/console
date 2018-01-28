@@ -1,3 +1,5 @@
+import '@webcomponents/custom-elements';
+import './elements';
 import './apollo';
 import createApp from './app';
 
