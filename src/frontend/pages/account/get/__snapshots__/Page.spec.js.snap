@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`React Card Component loading match snapshot 1`] = `
+<div
+  className="flex xs12"
+  style={Object {}}
+>
+  <div
+    className="progress-linear__bar"
+    style={
+      Object {
+        "height": "7px",
+      }
+    }
+  >
+    <div
+      className="primary progress-linear__background"
+      style={
+        Object {
+          "height": "auto",
+          "opacity": 0.3,
+          "width": "100%",
+        }
+      }
+    />
+    <div
+      className="progress-linear__bar"
+      style={Object {}}
+    >
+      <div
+        className="progress-linear__bar__indeterminate progress-linear__bar__indeterminate--active"
+      >
+        <div
+          className="progress-linear__bar__indeterminate long primary"
+        />
+        <div
+          className="progress-linear__bar__indeterminate short primary"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`React Card Component ready match snapshot 1`] = `
+<div
+  className="flex xs12"
+  style={Object {}}
+>
+  <div
+    className="card"
+    style={
+      Object {
+        "height": "auto",
+      }
+    }
+  >
+    <div
+      className="layout row"
+    >
+      <div
+        className="flex xs12 md2 lg1"
+        style={Object {}}
+      >
+        <img
+          alt="Avatar Icon"
+          src="bar.jpg"
+          style={
+            Object {
+              "minHeight": "50px",
+            }
+          }
+        />
+      </div>
+      <div
+        className="flex xs12 md8 lg11"
+        style={Object {}}
+      >
+        <div
+          className="card__title pb-0"
+        >
+          <div
+            className="headline mb-0"
+          >
+            <span
+              className="bold"
+            >
+              Name: 
+            </span>
+            foo
+          </div>
+        </div>
+        <div
+          className="card__text pt-1"
+        >
+          <div>
+            <span
+              className="bold"
+            >
+              Username: 
+            </span>
+            foobar
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
