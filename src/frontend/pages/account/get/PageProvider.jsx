@@ -11,6 +11,7 @@ export default class PageProvider extends Component {
 
   constructor(props) {
     super(props);
+    this.subscription = null;
     this.state = {
       client: null,
       hasError: false,
@@ -18,8 +19,15 @@ export default class PageProvider extends Component {
   }
 
   componentDidMount() {
+    this.subscription = defaultManager.subscribe(client => this.setState({ client }));
     defaultManager.getClient()
       .then(client => this.setState({ client }));
+  }
+
+  componentWillUnmount() {
+    if (this.subscription !== null) {
+      this.subscription.unsubscribe();
+    }
   }
 
   componentDidCatch(error, info) {
