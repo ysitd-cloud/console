@@ -91,7 +91,7 @@ exports[`React Card Component ready match snapshot 1`] = `
           </div>
         </div>
         <div
-          className="card__text pt-1"
+          className="pt-1 card__text"
         >
           <div>
             <span

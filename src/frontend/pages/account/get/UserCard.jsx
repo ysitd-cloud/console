@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../../../components/react/Card';
 import CardTitle from '../../../components/react/CardTitle';
+import CardText from '../../../components/react/CardText';
 import Flex from '../../../components/react/Flex';
 import Row from '../../../components/react/Row';
 
@@ -18,9 +19,9 @@ export default function UserCard({ avatarUrl, displayName, username }) {
               <span className="bold">Name: </span>{ displayName }
             </div>
           </CardTitle>
-          <div className="card__text pt-1">
+          <CardText className="pt-1">
             <div><span className="bold">Username: </span>{ username }</div>
-          </div>
+          </CardText>
         </Flex>
       </Row>
     </Card>
