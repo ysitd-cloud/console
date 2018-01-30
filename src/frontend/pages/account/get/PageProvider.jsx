@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ApolloProvider } from 'react-apollo';
 import PropTypes from 'prop-types';
 import PageWithQuery from './Page';
-import { defaultClient } from '../../../plugins/apollo';
+import { defaultManager } from '../../../service/apollo';
 
 export default class PageProvider extends Component {
   static propTypes = {
@@ -18,7 +18,7 @@ export default class PageProvider extends Component {
   }
 
   componentDidMount() {
-    defaultClient.getClient()
+    defaultManager.getClient()
       .then(client => this.setState({ client }));
   }
 
