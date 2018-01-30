@@ -31,7 +31,7 @@ exports[`React Card Component match snapshot 1`] = `
       style={Object {}}
     >
       <div
-        className="card__title pb-0"
+        className="pb-0 card__title"
       >
         <div
           className="headline mb-0"

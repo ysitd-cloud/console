@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`React CardTitle Component match snapshot 1`] = `
+<div
+  className="xs12 card__title"
+>
+  foo
+</div>
+`;
