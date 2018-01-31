@@ -11,8 +11,8 @@
     js-tokens "^3.0.0"
 
 "@babel/code-frame@^7.0.0-beta.35":
-  version "7.0.0-beta.38"
-  resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.0.0-beta.38.tgz#c0af5930617e55e050336838e3a3670983b0b2b2"
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.0.0-beta.39.tgz#91c90bb65207fc5a55128cb54956ded39e850457"
   dependencies:
     chalk "^2.0.0"
     esutils "^2.0.2"
@@ -1446,8 +1446,8 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000799"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000799.tgz#0904953de93f3f492647e58c1a1bda7a73a0cb0b"
+  version "1.0.30000800"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000800.tgz#a86e6bc23bd9a707d5df42f33e64d0495cfda218"
 
 caniuse-lite@^1.0.30000792:
   version "1.0.30000792"
@@ -5844,8 +5844,8 @@ raw-body@2.3.2:
     unpipe "1.0.0"
 
 rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.4.tgz#a0f606caae2a3b862bbd0ef85482c0125b315fa3"
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.5.tgz#275cd687f6e3b36cc756baa26dfee80a790301fd"
   dependencies:
     deep-extend "~0.4.0"
     ini "~1.3.0"
@@ -7135,9 +7135,9 @@ vue-jest@^2.0.0:
     tsconfig "^7.0.0"
     vue-template-es2015-compiler "^1.5.3"
 
-vue-loader@^13.0.4:
-  version "13.7.0"
-  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-13.7.0.tgz#4d6a35b169c2a0a488842fb95c85052105fa9729"
+vue-loader@^14.0.0:
+  version "14.0.2"
+  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-14.0.2.tgz#8812e1915ab35b9dd84b241ff4f98d5b0386fa9d"
   dependencies:
     consolidate "^0.14.0"
     hash-sum "^1.0.2"
@@ -7150,7 +7150,7 @@ vue-loader@^13.0.4:
     resolve "^1.4.0"
     source-map "^0.6.1"
     vue-hot-reload-api "^2.2.0"
-    vue-style-loader "^3.0.0"
+    vue-style-loader "^4.0.1"
     vue-template-es2015-compiler "^1.6.0"
 
 vue-meta@^1.1.0:
@@ -7178,9 +7178,16 @@ vue-server-renderer@^2.4.2:
     serialize-javascript "^1.3.0"
     source-map "0.5.6"
 
-vue-style-loader@^3.0.0, vue-style-loader@^3.0.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-3.1.1.tgz#74fdef91a81d38bc0125746a1b5505e62d69e32c"
+vue-style-loader@^3.0.1:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-3.1.2.tgz#6b66ad34998fc9520c2f1e4d5fa4091641c1597a"
+  dependencies:
+    hash-sum "^1.0.2"
+    loader-utils "^1.0.2"
+
+vue-style-loader@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.0.1.tgz#252300d32eb97e83c1a1cb5b2029e2d8c3adcf9f"
   dependencies:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
