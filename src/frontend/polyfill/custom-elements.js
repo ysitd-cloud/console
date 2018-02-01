@@ -59,6 +59,7 @@
  *  requirements with the latest version of popular transpilers.
  */
 
+/* eslint-disable */
 /* globals window */
 (() => {
   // Do nothing if `customElements` does not exist.
