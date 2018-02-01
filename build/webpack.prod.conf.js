@@ -19,28 +19,15 @@ module.exports = merge.smart(base, {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[id].[chunkhash].js',
   },
+  resolve: {
+    alias: {
+      react$: 'react/umd/react.production.min.js',
+      vue$: 'vue/dist/vue.esm.js',
+      moment$: 'moment/min/moment-with-locales.min.js',
+    },
+  },
   plugins: [
-    new AssetsWebpackPlugin({
-      filename: 'assets.json',
-      path: path.join(process.cwd(), 'dist'),
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-      sourceMap: true,
-    }),
-    new ExtractTextPlugin({
-      filename: '[name].[contenthash].css',
-    }),
-    new OptimizeCSSPlugin({
-      cssProcessorOptions: {
-        safe: true,
-      },
-    }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -58,6 +45,27 @@ module.exports = merge.smart(base, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor'],
+    }),
+    new AssetsWebpackPlugin({
+      filename: 'assets.json',
+      path: path.join(process.cwd(), 'dist'),
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: true,
+      },
+      sourceMap: true,
+    }),
+    new ExtractTextPlugin({
+      filename: '[name].[contenthash].css',
+    }),
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true,
+      },
     }),
     new VueSSRClientPlugin(),
   ],
