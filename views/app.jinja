@@ -9,6 +9,7 @@
 </head><body>
 {{- html | safe -}}
 <script defer>window.__INITIAL_STATE__={{-  state | safe -}}</script>
+<script defer src="/custom-elements.js"></script>
 {%- for script in scripts  -%}
     <script defer src="{{- script -}}"></script>
 {%- endfor -%}
