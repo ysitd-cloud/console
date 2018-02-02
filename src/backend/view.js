@@ -68,6 +68,11 @@ if (!IS_PRODUCTION) {
 module.exports = app => updateServerBundle()
   .then(() => updateRenderer())
   .then(() => {
+    app.get('/assets.json', (req, res) => {
+      res.sendFile('assets.json', {
+        root: `${process.cwd()}/dist`,
+      });
+    });
     app.get('*', (req, res, next) => {
       const context = {
         url: req.url,
