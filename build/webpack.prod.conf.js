@@ -23,6 +23,7 @@ module.exports = merge.smart(base, {
     alias: {
       react$: 'react/umd/react.production.min.js',
       vue$: 'vue/dist/vue.esm.js',
+      rxjs$: 'rxjs/bundles/RX.min.js',
       moment$: 'moment/min/moment-with-locales.min.js',
     },
   },
