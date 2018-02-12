@@ -115,7 +115,9 @@
     "snapshotSerializers": [
       "<rootDir>/node_modules/jest-serializer-vue"
     ],
-    "setupFiles": ["<rootDir>/test/setup"],
+    "setupFiles": [
+      "<rootDir>/test/setup"
+    ],
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/frontend/**/*.{js,jsx,vue}",
